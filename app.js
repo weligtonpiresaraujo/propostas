@@ -12,6 +12,9 @@
   var ultimoFoco = null;
   var acaoAtual = null;
   var icones = {};
+  var teclado = false;
+  document.addEventListener('keydown', function () { teclado = true; }, true);
+  document.addEventListener('pointerdown', function () { teclado = false; }, true);
 
   // Ícones da janela: copiados dos próprios botões da página (conteúdo fixo, nada vem do usuário).
   document.querySelectorAll('[data-abre]').forEach(function (a) {
@@ -33,7 +36,7 @@
         modal.classList.remove('aberto');
         app.removeAttribute('inert');
         app.removeAttribute('aria-hidden');
-        if (ultimoFoco) ultimoFoco.focus();
+        if (ultimoFoco && teclado) ultimoFoco.focus();
       }
       return;
     }
@@ -66,7 +69,8 @@
       app.setAttribute('aria-hidden', 'true');
     }
     corpo.scrollTop = 0;
-    btnX.focus({ preventScroll: true });
+    if (teclado) btnX.focus({ preventScroll: true });
+    else if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   }
 
   btnProx.addEventListener('click', function () { if (acaoAtual) acaoAtual(); });

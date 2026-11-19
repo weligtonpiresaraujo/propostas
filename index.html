@@ -117,6 +117,38 @@ button{font-family:inherit}
 @supports not (height:1dvh){.fundo-modal.foto .santinho{max-height:calc(92vh - 170px)}}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #F2B705;outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.janela{animation:none}}
+.banner{aspect-ratio:16/9;height:auto;border-radius:16px;overflow:hidden;margin-bottom:14px;background:#0E2238}
+.banner{position:relative}
+.banner img{width:100%;height:100%;object-fit:cover;display:block}
+.selo-ilu{position:absolute;right:8px;bottom:8px;background:rgba(14,34,56,.7);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px}
+.banner.ilu svg{display:block;width:100%;height:100%}
+.frase{font-size:18px;font-weight:600;color:var(--navy);margin:0 0 12px;text-align:center}
+.lista{display:flex;flex-direction:column;gap:10px}
+.item{background:var(--branco);border-radius:14px;border:2px solid var(--borda)}
+.item summary{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
+.item summary::-webkit-details-marker{display:none}
+.item .emo{flex-shrink:0;width:46px;height:46px;border-radius:12px;background:var(--verde-claro);display:flex;align-items:center;justify-content:center;font-size:24px}
+.item .txt{flex:1;display:flex;flex-direction:column;gap:2px}
+.item .txt b{font-size:17px;line-height:1.25}
+.item .txt small{font-size:15px;color:var(--cinza);line-height:1.3}
+
+
+
+
+.item .mais{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--azul);color:#fff;font-size:0;position:relative}
+.item .mais::before,.item .mais::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:3px;border-radius:2px;background:#fff;transform:translate(-50%,-50%)}
+.item .mais::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+.item[open] .mais{background:var(--verde)}
+.item[open] .mais::after{transform:translate(-50%,-50%) rotate(0deg)}
+.item .det{padding:0 16px 14px 72px}
+@media (max-width:360px){.item .det{padding-left:16px}}
+.item .det p{font-size:16px;color:var(--cinza);margin-top:4px}
+.item .det .como{color:var(--texto);margin-top:8px}
+.item .det .como b{color:var(--verde)}
+.passos-curtos{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
+.passos-curtos li{display:flex;align-items:center;gap:12px;background:var(--branco);border-radius:12px;padding:10px 14px;font-weight:700;font-size:16.5px;line-height:1.3}
+.passos-curtos span{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+
 /* telas muito baixas (celular deitado): deixa rolar para não cortar */
 @media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
 </style>
@@ -156,70 +188,69 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="corpo" id="corpo">
 
 <div class="painel" id="p-acesso" data-titulo="Controle de acesso" data-proxima="transito">
-<p class="intro">A portaria é a primeira barreira de segurança do residencial. A ideia é fazer funcionar bem o que já existe.</p>
-<ul class="itens">
-<li><h3>Cadastro facial na prática</h3><p>O reconhecimento facial só protege de verdade se todos estiverem cadastrados e com os dados em dia. Quando o cadastro está incompleto, a portaria acaba liberando a entrada na confiança.</p><p class="como"><b>Como:</b> mutirão de cadastro e atualização com apoio da administração, e revisão periódica de quem se mudou ou deixou de ter acesso.</p><span class="base">Estatuto, Art. 41, VII</span></li>
-<li><h3>Aviso de prestador que não saiu</h3><p>Sem esse aviso, um trabalhador que entrou de manhã pode continuar dentro do residencial à noite sem que ninguém perceba.</p><p class="como"><b>Como:</b> às 17h, horário definido para a saída dos prestadores de serviço, a guarita da ronda recebe a lista de quem entrou e ainda não saiu, e confere cada caso: se o serviço continua com autorização do morador ou se a pessoa precisa ser localizada.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Registro de todos que entram</h3><p>Se acontece algum problema, saber quem estava dentro do residencial e em que horário é o primeiro passo para esclarecer. Quem tem entrada livre também precisa constar.</p><p class="como"><b>Como:</b> identificação de visitantes e prestadores na entrada, com nome, destino e horário, e regras claras que valham para todos, como o Estatuto prevê.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Saída de materiais simples</h3><p>Sem uma autorização, a portaria não tem como saber se os móveis, ferramentas ou materiais que estão saindo foram liberados pelo dono.</p><p class="como"><b>Como:</b> o morador autoriza de forma rápida, por mensagem, informando o que vai sair e quem vai levar. Simples para o morador e seguro para todos.</p><span class="base">Estatuto, Art. 41, II</span></li>
-</ul>
+<div class="banner"><img src="portaria.webp" alt="Portaria do Residencial Villa Suíça" loading="lazy"></div>
+<div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">🙂</span><span class="txt"><b>Cadastro facial na prática</b><small>O sistema que já existe, funcionando para todos.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>O reconhecimento facial só protege de verdade se todos estiverem cadastrados e com os dados em dia. Quando o cadastro está incompleto, a portaria acaba liberando a entrada na confiança.</p><p class="como"><b>Como:</b> mutirão de cadastro e atualização com apoio da administração, e revisão periódica de quem se mudou ou deixou de ter acesso.</p><span class="base">Estatuto, Art. 41, VII</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🔔</span><span class="txt"><b>Aviso de prestador que não saiu</b><small>Às 17h, a ronda sabe quem ainda está dentro.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Sem esse aviso, um trabalhador que entrou de manhã pode continuar dentro do residencial à noite sem que ninguém perceba.</p><p class="como"><b>Como:</b> às 17h, horário definido para a saída dos prestadores de serviço, a guarita da ronda recebe a lista de quem entrou e ainda não saiu, e confere cada caso: se o serviço continua com autorização do morador ou se a pessoa precisa ser localizada.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">📋</span><span class="txt"><b>Registro de todos que entram</b><small>Visitantes, prestadores e entrada livre.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Se acontece algum problema, saber quem estava dentro do residencial e em que horário é o primeiro passo para esclarecer. Quem tem entrada livre também precisa constar.</p><p class="como"><b>Como:</b> identificação de visitantes e prestadores na entrada, com nome, destino e horário, e regras claras que valham para todos, como o Estatuto prevê.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">📦</span><span class="txt"><b>Saída de materiais simples</b><small>O morador autoriza rápido, por mensagem.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Sem uma autorização, a portaria não tem como saber se os móveis, ferramentas ou materiais que estão saindo foram liberados pelo dono.</p><p class="como"><b>Como:</b> o morador autoriza de forma rápida, por mensagem, informando o que vai sair e quem vai levar. Simples para o morador e seguro para todos.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+</div>
 </div>
 
 <div class="painel" id="p-transito" data-titulo="Trânsito e crianças" data-proxima="cuidado">
-<p class="intro">O Estatuto dá ao Conselho a responsabilidade pelo trânsito de pessoas e veículos dentro do residencial.</p>
-<ul class="itens">
-<li><h3>Pontos de risco mapeados com os moradores</h3><p>Quem mora em cada quadra sabe onde os carros correm, onde a visão é ruim e onde as crianças atravessam. Esse conhecimento precisa chegar ao Conselho.</p><p class="como"><b>Como:</b> levantamento aberto a todos, por formulário ou nas reuniões, e uma lista dos pontos que precisam de atenção primeiro.</p><span class="base">Estatuto, Art. 41, III</span></li>
-<li><h3>Campanha educativa sobre velocidade</h3><p>O Estatuto já proíbe trafegar acima da velocidade indicada nas placas. A regra existe; falta lembrar todo mundo dela.</p><p class="como"><b>Como:</b> avisos nos grupos, cartazes na portaria e conversa com os moradores, sempre em tom de conscientização e boa convivência.</p><span class="base">Estatuto, Art. 12 e Art. 41, III</span></li>
-<li><h3>Orientação a entregadores e caminhões</h3><p>Entregadores e motoristas de fora não conhecem o residencial nem sabem que ali há crianças brincando na rua.</p><p class="como"><b>Como:</b> orientação rápida na portaria sobre velocidade, horários e locais de parada, com um aviso bem visível na entrada.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Sinalização perto do parquinho e da quadra</h3><p>São os lugares onde as crianças mais circulam, muitas vezes correndo e sem olhar para os lados.</p><p class="como"><b>Como:</b> avaliar placas e faixas de travessia nesses pontos, começando pelos locais apontados no levantamento com os moradores.</p><span class="base">Estatuto, Art. 41, III</span></li>
-</ul>
+<div class="banner"><img src="transito.webp" alt="Ilustração: pai e filha atravessando a faixa de pedestres de mãos dadas" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">📍</span><span class="txt"><b>Pontos de risco mapeados</b><small>Ouvindo quem mora em cada quadra.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Quem mora em cada quadra sabe onde os carros correm, onde a visão é ruim e onde as crianças atravessam. Esse conhecimento precisa chegar ao Conselho.</p><p class="como"><b>Como:</b> levantamento aberto a todos, por formulário ou nas reuniões, e uma lista dos pontos que precisam de atenção primeiro.</p><span class="base">Estatuto, Art. 41, III</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🚗</span><span class="txt"><b>Campanha sobre velocidade</b><small>A regra já existe: vamos lembrar todo mundo.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>O Estatuto já proíbe trafegar acima da velocidade indicada nas placas. A regra existe; falta lembrar todo mundo dela.</p><p class="como"><b>Como:</b> avisos nos grupos, cartazes na portaria e conversa com os moradores, sempre em tom de conscientização e boa convivência.</p><span class="base">Estatuto, Art. 12 e Art. 41, III</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🚚</span><span class="txt"><b>Entregadores e caminhões orientados</b><small>Velocidade, horários e locais de parada.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Entregadores e motoristas de fora não conhecem o residencial nem sabem que ali há crianças brincando na rua.</p><p class="como"><b>Como:</b> orientação rápida na portaria sobre velocidade, horários e locais de parada, com um aviso bem visível na entrada.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">⚠️</span><span class="txt"><b>Sinalização no parquinho e na quadra</b><small>Onde as crianças mais circulam.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>São os lugares onde as crianças mais circulam, muitas vezes correndo e sem olhar para os lados.</p><p class="como"><b>Como:</b> avaliar placas e faixas de travessia nesses pontos, começando pelos locais apontados no levantamento com os moradores.</p><span class="base">Estatuto, Art. 41, III</span></div></details>
+</div>
 </div>
 
-<div class="painel" id="p-cuidado" data-titulo="Idosos, crianças e bem-estar" data-proxima="mulheres">
-<p class="intro">Segurança também é cuidado com quem mais precisa.</p>
-<ul class="itens">
-<li><h3>Contato de emergência dos idosos</h3><p>Quando um idoso passa mal ou sofre uma queda, cada minuto conta, e nem sempre a portaria sabe a quem avisar.</p><p class="como"><b>Como:</b> cadastro voluntário, só para quem quiser, com o telefone de um familiar ou pessoa de confiança, guardado com sigilo e usado apenas em emergências.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Emergência médica</h3><p>Numa emergência, a demora para liberar a ambulância ou para saber quem chamar pode fazer toda a diferença.</p><p class="como"><b>Como:</b> um procedimento simples para a portaria: chamar o SAMU (192) ou os Bombeiros (193), avisar a família, liberar logo a entrada do socorro e guiar a equipe até a casa.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Criança perdida</h3><p>Uma criança pode se afastar de casa sem que os pais percebam. Na hora do susto, todos precisam saber exatamente o que fazer.</p><p class="como"><b>Como:</b> um passo a passo para portaria e ronda: anotar como a criança está vestida, conferir as câmeras, percorrer as áreas comuns, não deixar a criança sair desacompanhada pela portaria e manter a família informada.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Iluminação</h3><p>Rua escura aumenta o risco de acidentes e deixa os moradores inseguros para circular à noite.</p><p class="como"><b>Como:</b> levantamento dos pontos escuros com ajuda dos moradores e da ronda noturna, e encaminhamento dos reparos à administração.</p><span class="base">Estatuto, Art. 41, III</span></li>
-</ul>
+<div class="painel" id="p-cuidado" data-titulo="Idosos, crianças e bem‑estar" data-proxima="mulheres">
+<div class="banner"><img src="cuidado.webp" alt="Ilustração: moradora caminhando de braço dado com um idoso de bengala ao entardecer" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">📞</span><span class="txt"><b>Contato de emergência dos idosos</b><small>Um familiar para avisar, com sigilo.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Quando um idoso passa mal ou sofre uma queda, cada minuto conta, e nem sempre a portaria sabe a quem avisar.</p><p class="como"><b>Como:</b> cadastro voluntário, só para quem quiser, com o telefone de um familiar ou pessoa de confiança, guardado com sigilo e usado apenas em emergências.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🚑</span><span class="txt"><b>Emergência médica</b><small>Socorro liberado sem demora.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Numa emergência, a demora para liberar a ambulância ou para saber quem chamar pode fazer toda a diferença.</p><p class="como"><b>Como:</b> um procedimento simples para a portaria: chamar o SAMU (192) ou os Bombeiros (193), avisar a família, liberar logo a entrada do socorro e guiar a equipe até a casa.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🧒</span><span class="txt"><b>Criança perdida</b><small>Um passo a passo para encontrar rápido.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Uma criança pode se afastar de casa sem que os pais percebam. Na hora do susto, todos precisam saber exatamente o que fazer.</p><p class="como"><b>Como:</b> um passo a passo para portaria e ronda: anotar como a criança está vestida, conferir as câmeras, percorrer as áreas comuns, não deixar a criança sair desacompanhada pela portaria e manter a família informada.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">💡</span><span class="txt"><b>Iluminação</b><small>Nenhuma rua escura.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Rua escura aumenta o risco de acidentes e deixa os moradores inseguros para circular à noite.</p><p class="como"><b>Como:</b> levantamento dos pontos escuros com ajuda dos moradores e da ronda noturna, e encaminhamento dos reparos à administração.</p><span class="base">Estatuto, Art. 41, III</span></div></details>
+</div>
 </div>
 
 <div class="painel" id="p-mulheres" data-titulo="Mulheres na segurança" data-proxima="patrimonio">
-<div class="caixa-verde"><b>Nenhuma mulher</b> está entre os candidatos ao Conselho de Segurança. As 3 vagas que ficam abertas são uma oportunidade.</div>
-<ul class="itens">
-<li><h3>Moradoras nas vagas abertas</h3><p>Segurança não é igual para todos. Uma mulher que chega tarde sozinha, ou que precisa de proteção, tem preocupações que muitas vezes passam despercebidas.</p><p class="como"><b>Como:</b> convidar e incentivar moradoras a ocupar as vagas abertas no Conselho. Não é reserva de vaga: é abrir a porta.</p><span class="base">Estatuto, Art. 40</span></li>
-<li><h3>Canal reservado e sigiloso</h3><p>Muitas mulheres deixam de relatar assédio ou importunação por medo de se expor diante dos vizinhos.</p><p class="como"><b>Como:</b> um canal direto e sigiloso com o Conselho, em que o relato é tratado com discrição e encaminhado da forma certa.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Campanha “Não se cale”</h3><p>Em casos de violência, o vizinho muitas vezes é o primeiro a perceber, mas não sabe o que fazer.</p><p class="como"><b>Como:</b> cartazes nas áreas comuns com os telefones 180 e 190 e uma orientação clara: presenciou uma agressão, peça ajuda.</p><span class="base">Estatuto, Art. 41, II</span></li>
-</ul>
-<p class="subtitulo">Quando uma mulher sofre agressão</p>
-<p class="intro" style="margin-top:6px">Proposta de passo a passo, com portaria e ronda treinadas para segui-lo. Vale para qualquer moradora.</p>
-<ol class="itens numerada">
-<li><h3>Agressão acontecendo: ligar 190 na hora</h3><p>A portaria chama a Polícia Militar e envia a ronda, sem esperar autorização.</p></li>
-<li><h3>Acolher com sigilo</h3><p>Oferecer um local seguro e nunca expor a moradora.</p></li>
-<li><h3>Guardar as imagens</h3><p>Preservar as gravações e registrar a ocorrência para as autoridades.</p></li>
-<li><h3>Orientar sobre a rede de apoio</h3><p>Ligue 180, delegacia e Patrulha Maria da Penha.</p></li>
-<li><h3>Medida protetiva respeitada</h3><p>Com autorização da moradora, a portaria não libera a entrada do agressor.</p></li>
+<div class="banner"><img src="mulheres.webp" alt="Ilustração: moradora caminhando à noite com o celular enquanto o porteiro acena da guarita" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">🙋‍♀️</span><span class="txt"><b>Moradoras nas vagas abertas</b><small>Convite para ocupar as 3 vagas do Conselho.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Hoje nenhuma mulher está entre os candidatos ao Conselho de Segurança. Segurança não é igual para todos: uma mulher que chega tarde sozinha, ou que precisa de proteção, tem preocupações que muitas vezes passam despercebidas.</p><p class="como"><b>Como:</b> convidar e incentivar moradoras a ocupar as vagas abertas no Conselho. Não é reserva de vaga: é abrir a porta.</p><span class="base">Estatuto, Art. 40</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🤫</span><span class="txt"><b>Canal reservado e sigiloso</b><small>Para relatar assédio sem se expor.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Muitas mulheres deixam de relatar assédio ou importunação por medo de se expor diante dos vizinhos.</p><p class="como"><b>Como:</b> um canal direto e sigiloso com o Conselho, em que o relato é tratado com discrição e encaminhado da forma certa.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">📣</span><span class="txt"><b>Campanha “Não se cale”</b><small>Presenciou uma agressão? Peça ajuda: 180 ou 190.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Em casos de violência, o vizinho muitas vezes é o primeiro a perceber, mas não sabe o que fazer.</p><p class="como"><b>Como:</b> cartazes nas áreas comuns com os telefones 180 e 190 e uma orientação clara: presenciou uma agressão, peça ajuda.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+</div>
+<p class="subtitulo">Se uma mulher sofrer agressão</p>
+<ol class="passos-curtos">
+<li><span>1</span>Ligar 190 na hora</li>
+<li><span>2</span>Acolher com sigilo</li>
+<li><span>3</span>Guardar as imagens</li>
+<li><span>4</span>Orientar: Ligue 180 e Patrulha Maria da Penha</li>
+<li><span>5</span>Respeitar a medida protetiva na portaria</li>
 </ol>
-<p class="nota">Base: Estatuto, Art. 41, II e VII. Referências: Lei Maria da Penha (Lei nº 11.340/2006) e <a href="https://www.oabgo.org.br/wp-content/uploads/2025/03/PREVENCAO-E-PROTECAO-CONTRA-A-VIOLENCIA-DOMESTICA-NOS-CONDOMINIOS-2-1.pdf">cartilha da OAB-GO</a>.</p>
+<p class="nota">Portaria e ronda treinadas para seguir estes passos. Base: Estatuto, Art. 41, II e VII; Lei Maria da Penha e <a href="https://www.oabgo.org.br/wp-content/uploads/2025/03/PREVENCAO-E-PROTECAO-CONTRA-A-VIOLENCIA-DOMESTICA-NOS-CONDOMINIOS-2-1.pdf">cartilha da OAB-GO</a>.</p>
 </div>
 
 <div class="painel" id="p-patrimonio" data-titulo="Patrimônio e dados" data-proxima="transparencia">
-<p class="intro">A área de lazer é de todos. E, com mais câmeras, vem mais responsabilidade com as imagens.</p>
-<ul class="itens">
-<li><h3>Câmeras na área de lazer</h3><p>Churrasqueiras, brinquedos e academia são de todos, e o conserto de cada dano sai do bolso de todos os associados.</p><p class="como"><b>Como:</b> estender a cobertura das câmeras para a área de lazer, registrar cada dano e acompanhar até a solução, para que não se repita.</p><span class="base">Estatuto, Art. 41, III e VII</span></li>
-<li><h3>Regras para as imagens</h3><p>As câmeras protegem, mas as imagens mostram a rotina das famílias. Elas precisam ser tratadas com responsabilidade.</p><p class="como"><b>Como:</b> regras por escrito sobre quem pode acessar, por quanto tempo as imagens ficam guardadas e como são repassadas à polícia, seguindo a LGPD.</p><span class="base">Estatuto, Art. 41, II</span></li>
-</ul>
+<div class="banner"><img src="lazer.webp" alt="Área de lazer do Residencial Villa Suíça" loading="lazy"></div>
+<div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">📹</span><span class="txt"><b>Câmeras na área de lazer</b><small>Cuidar do que é de todos.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Churrasqueiras, brinquedos e academia são de todos, e o conserto de cada dano sai do bolso de todos os associados.</p><p class="como"><b>Como:</b> estender a cobertura das câmeras para a área de lazer, registrar cada dano e acompanhar até a solução, para que não se repita.</p><span class="base">Estatuto, Art. 41, III e VII</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">🔒</span><span class="txt"><b>Regras para as imagens</b><small>Privacidade das famílias, conforme a LGPD.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>As câmeras protegem, mas as imagens mostram a rotina das famílias. Elas precisam ser tratadas com responsabilidade.</p><p class="como"><b>Como:</b> regras por escrito sobre quem pode acessar, por quanto tempo as imagens ficam guardadas e como são repassadas à polícia, seguindo a LGPD.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
+</div>
 </div>
 
 <div class="painel" id="p-transparencia" data-titulo="Transparência" data-proxima="votar">
-<div class="caixa-verde">O associado é <b>muito bem-vindo</b> em todas as decisões. Ouvir a todos é fundamental para decidir bem. Pelo Estatuto, as reuniões do Conselho de Segurança são públicas e qualquer associado pode participar (Art. 18).</div>
-<ul class="itens">
-<li><h3>Reuniões abertas</h3><p>Decisão de segurança mexe com a rotina de todos. Por isso, todos devem poder acompanhar e dar a sua opinião.</p><p class="como"><b>Como:</b> calendário divulgado com antecedência, convite a todos os moradores e espaço para quem quiser falar.</p><span class="base">Estatuto, Art. 18</span></li>
-<li><h3>Ouvir antes de decidir</h3><p>Ninguém conhece melhor os problemas do residencial do que quem mora nele.</p><p class="como"><b>Como:</b> antes de mudanças importantes, consultar os moradores por enquete ou em reunião, e levar essas opiniões para a decisão do Conselho.</p><span class="base">Estatuto, Art. 18 e Art. 41, II</span></li>
-<li><h3>Retorno mensal</h3><p>Morador bem informado confia mais e colabora mais com a segurança.</p><p class="como"><b>Como:</b> relatório mensal simples com as ocorrências, o que foi feito e o que ainda está pendente, e um canal aberto para dúvidas e sugestões.</p><span class="base">Estatuto, Art. 41, VII</span></li>
-<li><h3>Contratos acompanhados</h3><p>Os sistemas de segurança são pagos por todos os associados.</p><p class="como"><b>Como:</b> acompanhar se o que foi contratado está sendo entregue e funcionando, e informar os moradores.</p><span class="base">Estatuto, Art. 41, VII</span></li>
-</ul>
+<div class="banner"><img src="transparencia.webp" alt="Ilustração: moradores reunidos na churrasqueira conversando sobre um gráfico" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<p class="frase">O associado é <b>muito bem-vindo</b> em todas as decisões.</p><div class="lista">
+<details class="item"><summary><span class="emo" aria-hidden="true">🗓️</span><span class="txt"><b>Reuniões abertas</b><small>Todos podem acompanhar e opinar.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Decisão de segurança mexe com a rotina de todos. Por isso, todos devem poder acompanhar e dar a sua opinião. Pelo Estatuto, as reuniões do Conselho de Segurança são públicas.</p><p class="como"><b>Como:</b> calendário divulgado com antecedência, convite a todos os moradores e espaço para quem quiser falar.</p><span class="base">Estatuto, Art. 18</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">👂</span><span class="txt"><b>Ouvir antes de decidir</b><small>Enquete ou reunião antes de mudanças importantes.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Ninguém conhece melhor os problemas do residencial do que quem mora nele.</p><p class="como"><b>Como:</b> antes de mudanças importantes, consultar os moradores por enquete ou em reunião, e levar essas opiniões para a decisão do Conselho.</p><span class="base">Estatuto, Art. 18 e Art. 41, II</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">📊</span><span class="txt"><b>Retorno mensal</b><small>O que foi feito e o que falta, todo mês.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Morador bem informado confia mais e colabora mais com a segurança.</p><p class="como"><b>Como:</b> relatório mensal simples com as ocorrências, o que foi feito e o que ainda está pendente, e um canal aberto para dúvidas e sugestões.</p><span class="base">Estatuto, Art. 41, VII</span></div></details>
+<details class="item"><summary><span class="emo" aria-hidden="true">✅</span><span class="txt"><b>Contratos acompanhados</b><small>O que foi contratado, funcionando.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Os sistemas de segurança são pagos por todos os associados.</p><p class="como"><b>Como:</b> acompanhar se o que foi contratado está sendo entregue e funcionando, e informar os moradores.</p><span class="base">Estatuto, Art. 41, VII</span></div></details>
+</div>
 <p class="subtitulo">O que vou levar à primeira reunião</p>
 <ol class="itens numerada">
 <li><h3>Calendário de reuniões abertas</h3></li>

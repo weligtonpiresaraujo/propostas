@@ -38,7 +38,7 @@ button{font-family:inherit}
 .grade{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:clamp(8px,1.4vh,12px)}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(4px,1vh,10px);background:var(--branco);border:2px solid var(--borda);border-radius:18px;box-shadow:0 3px 0 var(--borda);color:var(--texto);text-decoration:none;padding:8px;text-align:center;font-size:clamp(14px,2.2vh,18px);font-weight:700;line-height:1.2;min-height:0;cursor:pointer}
 .tile:active{transform:translateY(3px);box-shadow:none}
-.tile .ic{width:clamp(38px,6.5vh,56px);height:clamp(38px,6.5vh,56px);border-radius:14px;background:var(--azul);display:flex;align-items:center;justify-content:center}
+.tile .ic{flex-shrink:0;width:clamp(36px,6.5vh,56px);height:clamp(36px,6.5vh,56px);border-radius:14px;background:var(--azul);display:flex;align-items:center;justify-content:center}
 .tile .ic svg{width:58%;height:58%}
 .tile .lbl{min-height:2.4em;display:flex;align-items:center;justify-content:center}
 .linha{display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.4vh,12px);height:clamp(64px,11vh,88px)}
@@ -46,6 +46,19 @@ button{font-family:inherit}
 .mini:active{transform:translateY(3px);box-shadow:none}
 .mini svg{width:clamp(22px,3.6vh,28px);height:clamp(22px,3.6vh,28px)}
 .mini.votar{background:var(--verde);border-color:var(--verde);box-shadow:0 3px 0 #14563A;color:#fff}
+.sugestao{display:flex;align-items:center;justify-content:center;gap:10px;height:clamp(48px,7.5vh,62px);border-radius:16px;background:var(--branco);border:2px solid var(--verde);box-shadow:0 3px 0 #9CCFB2;color:var(--verde);text-decoration:none;font-size:clamp(15px,2.2vh,18px);font-weight:800;flex-shrink:0}
+.sugestao:active{transform:translateY(3px);box-shadow:none}
+.sugestao svg{width:clamp(22px,3.4vh,28px);height:clamp(22px,3.4vh,28px)}
+.form{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:17px}
+.form input,.form textarea{font:inherit;font-size:18px;padding:12px 14px;border:2px solid var(--borda);border-radius:12px;background:var(--branco);color:var(--texto);width:100%}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--azul)}
+.form textarea{min-height:130px;resize:vertical}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.aviso-erro{display:none;background:#FDECEC;color:#8A1C1C;border-radius:12px;padding:10px 14px;font-size:16px;font-weight:600}
+.aviso-erro.mostrar{display:block}
+.privado{font-size:14px;color:var(--cinza)}
+.proxima.whats{background:var(--verde);border-color:var(--verde)}
 .dica{text-align:center;font-size:clamp(11px,1.6vh,13px);color:var(--cinza)}
 
 /* ===== JANELA FLUTUANTE ===== */
@@ -92,6 +105,7 @@ button{font-family:inherit}
 .proxima{background:var(--azul);border:2px solid var(--azul);color:#fff}
 .proxima[hidden]{display:none}
 
+@media (max-height:600px){.dica{display:none}}
 /* telas muito baixas (celular deitado): deixa rolar para não cortar */
 @media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
 </style>
@@ -120,6 +134,7 @@ button{font-family:inherit}
 <a class="mini" href="#telefones"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Emergência</a>
 <a class="mini" href="#conselho"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg>O Conselho</a>
 </div>
+<a class="sugestao" href="#sugestao"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>Mande sua sugestão</a>
 <p class="dica">Toque em um botão para ver os detalhes.</p>
 </main>
 </div>
@@ -224,6 +239,20 @@ button{font-family:inherit}
 </div>
 </div>
 
+<div class="painel" id="p-sugestao" data-titulo="Mande sua sugestão" data-acao="whats">
+<p class="intro">Ninguém conhece melhor o residencial do que quem mora nele. Sua sugestão chega direto no meu WhatsApp.</p>
+<form class="form" id="form-sugestao" novalidate>
+<label>Nome<input type="text" id="f-nome" autocomplete="name" placeholder="Seu nome"></label>
+<div class="duas">
+<label>Quadra<input type="text" id="f-quadra" inputmode="numeric" placeholder="Ex.: 10"></label>
+<label>Lote<input type="text" id="f-lote" inputmode="numeric" placeholder="Ex.: 05"></label>
+</div>
+<label>Sugestão<textarea id="f-texto" placeholder="Escreva aqui a sua sugestão para a segurança do Villa Suíça"></textarea></label>
+<p class="aviso-erro" id="f-erro">Preencha todos os campos, por favor.</p>
+<p class="privado">Seus dados servem só para identificar a sugestão e não serão divulgados.</p>
+</form>
+</div>
+
 <div class="painel" id="p-conselho" data-titulo="Como o Conselho funciona" data-proxima="acesso" data-rotulo="Ver propostas ›">
 <div class="nums">
 <div><b>7</b><span>vagas no Conselho</span></div>
@@ -251,9 +280,9 @@ button{font-family:inherit}
   var btnProx = document.getElementById('proxima');
   var abertoPeloApp = false;
   var icones = {};
-  document.querySelectorAll('.tile, .mini').forEach(function(a){
+  document.querySelectorAll('.tile, .mini, .sugestao').forEach(function(a){
     var svg = a.querySelector('svg');
-    if (svg) icones[a.getAttribute('href').slice(1)] = svg.outerHTML.replace(/stroke="#1F5FAE"/g, 'stroke="#fff"');
+    if (svg) icones[a.getAttribute('href').slice(1)] = svg.outerHTML.replace(/stroke="#1F5FAE"/g, 'stroke="#fff"').replace(/stroke="#1E7A52"/g, 'stroke="#fff"');
     a.addEventListener('click', function(){ abertoPeloApp = true; });
   });
 
@@ -265,13 +294,30 @@ button{font-family:inherit}
     titulo.textContent = painel.getAttribute('data-titulo');
     icone.innerHTML = icones[id] || '';
     var prox = painel.getAttribute('data-proxima');
-    if (prox) {
+    btnProx.classList.remove('whats');
+    if (painel.getAttribute('data-acao') === 'whats') {
+      btnProx.hidden = false;
+      btnProx.textContent = 'Enviar pelo WhatsApp';
+      btnProx.classList.add('whats');
+      btnProx.onclick = enviarWhats;
+    } else if (prox) {
       btnProx.hidden = false;
       btnProx.textContent = painel.getAttribute('data-rotulo') || (prox === 'votar' ? 'Como votar ›' : 'Próxima ›');
       btnProx.onclick = function(){ location.replace('#' + prox); };
     } else { btnProx.hidden = true; }
     modal.classList.add('aberto');
     corpo.scrollTop = 0;
+  }
+  document.getElementById('form-sugestao').addEventListener('input', function(){ document.getElementById('f-erro').classList.remove('mostrar'); });
+  function enviarWhats(){
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    var nome = v('f-nome'), quadra = v('f-quadra'), lote = v('f-lote'), texto = v('f-texto');
+    var erro = document.getElementById('f-erro');
+    if (!nome || !quadra || !lote || !texto) { erro.classList.add('mostrar'); corpo.scrollTop = corpo.scrollHeight; return; }
+    erro.classList.remove('mostrar');
+    var msg = 'Olá, Weligton! Tenho uma sugestão para a segurança do Villa Suíça.\n' +
+      'Nome: ' + nome + '\n' + 'Quadra: ' + quadra + ' · Lote: ' + lote + '\n' + 'Sugestão: ' + texto;
+    window.location.href = 'https://wa.me/5561992551099?text=' + encodeURIComponent(msg);
   }
   function fechar(){
     if (abertoPeloApp && history.length > 1) { abertoPeloApp = false; history.back(); }

@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Weligton · Conselho de Segurança · Villa Suíça</title>
 <meta name="description" content="Propostas de Weligton Araujo Pires para o Conselho de Segurança do Residencial Villa Suíça. Eleição em 28/11, das 9h às 12h, na Churrasqueira nº 02.">
 <meta property="og:type" content="website">
@@ -17,143 +17,117 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--azul:#1F5FAE;--azul-esc:#174A8B;--navy:#0E2238;--verde:#1E7A52;--verde-claro:#E7F4EC;--fundo:#F4F6F8;--branco:#FFFFFF;--texto:#13243A;--cinza:#4A5568;--borda:#D9E1EA}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--fundo);color:var(--texto);font-family:Montserrat,Arial,sans-serif;font-size:19px;line-height:1.55}
-.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+:root{--azul:#1F5FAE;--navy:#0E2238;--verde:#1E7A52;--verde-claro:#E7F4EC;--fundo:#EEF2F6;--branco:#FFFFFF;--texto:#13243A;--cinza:#4A5568;--borda:#D9E1EA}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{background:var(--fundo);color:var(--texto);font-family:Montserrat,Arial,sans-serif;font-size:18px;line-height:1.5;overflow:hidden;-webkit-text-size-adjust:100%}
 h1,h2,h3,p{margin:0}
 a{color:var(--azul)}
+button{font-family:inherit}
 
-/* topo */
-.topo{background:var(--azul);color:#fff;padding:22px 0 26px}
-.topo .wrap{display:flex;align-items:center;gap:18px}
-.topo img{width:104px;height:104px;border-radius:50%;object-fit:cover;object-position:50% 18%;border:4px solid #7FE0A8;background:#2A6FC9;flex-shrink:0}
-.topo h1{font-size:25px;font-weight:800;line-height:1.2}
-.topo .cargo{font-size:15px;font-weight:700;letter-spacing:1px;color:#BFF0D3;margin-top:4px}
-.data{background:var(--navy);color:#fff;text-align:center;padding:14px 18px;font-size:18px;font-weight:600;line-height:1.4}
-.data b{color:#7FE0A8}
+/* ===== TELA PRINCIPAL (tamanho fixo) ===== */
+.app{height:100vh;height:100dvh;max-width:560px;margin:0 auto;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+.topo{background:var(--azul);color:#fff;display:flex;align-items:center;gap:14px;padding:clamp(10px,2.2vh,18px) 16px}
+.topo img{width:clamp(56px,10vh,80px);height:clamp(56px,10vh,80px);border-radius:50%;object-fit:cover;object-position:50% 18%;border:3px solid #7FE0A8;background:#2A6FC9;flex-shrink:0}
+.topo h1{font-size:clamp(18px,3vh,23px);font-weight:800;line-height:1.15}
+.topo p{font-size:clamp(12px,1.8vh,14px);font-weight:700;letter-spacing:1px;color:#BFF0D3;margin-top:3px}
+.faixa{background:var(--navy);color:#fff;text-align:center;font-weight:600;font-size:clamp(13px,2vh,16px);line-height:1.35;padding:clamp(6px,1.2vh,10px) 12px}
+.faixa b{color:#7FE0A8}
+.miolo{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(6px,1.2vh,10px);padding:clamp(8px,1.6vh,14px) 14px}
+.rotulo{font-size:clamp(11px,1.6vh,13px);font-weight:800;letter-spacing:2px;color:var(--cinza)}
+.grade{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:clamp(8px,1.4vh,12px)}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(4px,1vh,10px);background:var(--branco);border:2px solid var(--borda);border-radius:18px;box-shadow:0 3px 0 var(--borda);color:var(--texto);text-decoration:none;padding:8px;text-align:center;font-size:clamp(14px,2.2vh,18px);font-weight:700;line-height:1.2;min-height:0;cursor:pointer}
+.tile:active{transform:translateY(3px);box-shadow:none}
+.tile .ic{width:clamp(38px,6.5vh,56px);height:clamp(38px,6.5vh,56px);border-radius:14px;background:var(--azul);display:flex;align-items:center;justify-content:center}
+.tile .ic svg{width:58%;height:58%}
+.linha{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:clamp(8px,1.4vh,12px);height:clamp(64px,11vh,88px)}
+.mini{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border-radius:16px;background:var(--branco);border:2px solid var(--borda);box-shadow:0 3px 0 var(--borda);color:var(--texto);text-decoration:none;font-size:clamp(12px,1.8vh,15px);font-weight:700;line-height:1.15;text-align:center;padding:6px;cursor:pointer}
+.mini:active{transform:translateY(3px);box-shadow:none}
+.mini svg{width:clamp(22px,3.6vh,28px);height:clamp(22px,3.6vh,28px)}
+.mini.votar{background:var(--verde);border-color:var(--verde);box-shadow:0 3px 0 #14563A;color:#fff}
+.dica{text-align:center;font-size:clamp(11px,1.6vh,13px);color:var(--cinza)}
 
-/* telas */
-.tela{display:none;padding:26px 0 40px}
-.tela.ativa{display:block}
-.sem-js .tela{display:block}
-.chamada{font-size:22px;font-weight:700;line-height:1.35;margin-bottom:6px}
-.ajuda{color:var(--cinza);margin-bottom:20px}
-
-/* botões grandes */
-.menu{display:grid;grid-template-columns:1fr;gap:12px}
-.botao{display:flex;align-items:center;gap:16px;width:100%;min-height:76px;padding:14px 18px;background:var(--branco);border:2px solid var(--borda);border-radius:16px;text-decoration:none;color:var(--texto);font-size:20px;font-weight:700;line-height:1.25;box-shadow:0 2px 0 var(--borda)}
-.botao:active{transform:translateY(2px);box-shadow:none}
-.botao .ic{width:48px;height:48px;border-radius:12px;background:var(--azul);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.botao .ic svg{width:28px;height:28px}
-.botao .seta{margin-left:auto;font-size:28px;color:var(--azul);font-weight:400}
-.botao.destaque{background:var(--verde);border-color:var(--verde);color:#fff;box-shadow:0 2px 0 #14563A}
-.botao.destaque .ic{background:rgba(255,255,255,.18)}
-.botao.destaque .seta{color:#fff}
-.grupo{font-size:15px;font-weight:800;letter-spacing:2px;color:var(--cinza);margin:26px 0 10px}
-
-/* página de proposta */
-.voltar{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:10px 18px;border-radius:30px;background:var(--branco);border:2px solid var(--borda);text-decoration:none;color:var(--texto);font-weight:700;font-size:18px;margin-bottom:18px}
-.tela h2{font-size:30px;font-weight:800;line-height:1.2;color:var(--navy)}
-.tela .intro{color:var(--cinza);margin-top:10px}
-.itens{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px}
-.itens li{background:var(--branco);border-left:6px solid var(--verde);border-radius:12px;padding:16px 18px}
-.itens h3{font-size:20px;font-weight:700;line-height:1.3}
-.itens p{color:var(--cinza);margin-top:4px;font-size:18px}
-.base{display:block;font-size:15px;font-weight:600;color:var(--verde);margin-top:8px}
+/* ===== JANELA FLUTUANTE ===== */
+.fundo-modal{position:fixed;inset:0;background:rgba(14,34,56,.55);display:none;align-items:flex-end;justify-content:center;z-index:10}
+.fundo-modal.aberto{display:flex}
+.janela{background:var(--fundo);width:100%;max-width:560px;max-height:92vh;max-height:92dvh;border-radius:22px 22px 0 0;display:flex;flex-direction:column;overflow:hidden;animation:sobe .22s ease-out}
+@keyframes sobe{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+@media (min-width:600px){.fundo-modal{align-items:center}.janela{border-radius:22px;max-height:86vh}}
+.cab{display:flex;align-items:center;gap:12px;background:var(--azul);color:#fff;padding:16px 16px 16px 18px}
+.cab .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cab .ic svg{width:26px;height:26px}
+.cab h2{font-size:21px;font-weight:800;line-height:1.2;flex:1}
+.x{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:26px;line-height:1;cursor:pointer;flex-shrink:0}
+.corpo{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px 20px}
+.painel{display:none}
+.painel.ativo{display:block}
+.intro{color:var(--cinza);font-size:17px}
+.itens{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:10px}
+.itens li{background:var(--branco);border-left:6px solid var(--verde);border-radius:12px;padding:14px 16px}
+.itens h3{font-size:18.5px;font-weight:700;line-height:1.3}
+.itens p{color:var(--cinza);margin-top:4px;font-size:17px}
+.base{display:block;font-size:14px;font-weight:600;color:var(--verde);margin-top:6px}
 .numerada{counter-reset:n}
-.numerada li{counter-increment:n;position:relative;padding-left:70px}
-.numerada li::before{content:counter(n);position:absolute;left:16px;top:16px;width:40px;height:40px;border-radius:50%;background:var(--verde);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
-.caixa-verde{background:var(--verde-claro);border-radius:14px;padding:18px;margin-top:22px}
-.caixa-verde p{font-size:18px}
-.subtitulo{font-size:24px;font-weight:800;color:var(--navy);margin-top:34px}
-.nota{font-size:15px;color:var(--cinza);margin-top:16px}
-.rodape-tela{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.numerada li{counter-increment:n;position:relative;padding-left:64px}
+.numerada li::before{content:counter(n);position:absolute;left:14px;top:14px;width:36px;height:36px;border-radius:50%;background:var(--verde);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.caixa-verde{background:var(--verde-claro);border-radius:14px;padding:14px 16px;margin-top:4px;font-size:17px}
+.subtitulo{font-size:20px;font-weight:800;color:var(--navy);margin-top:26px}
+.nota{font-size:14px;color:var(--cinza);margin-top:14px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.nums div{background:var(--branco);border-radius:12px;padding:12px 6px;text-align:center}
+.nums b{display:block;font-size:36px;font-weight:800;color:var(--verde);line-height:1.1}
+.nums span{display:block;font-size:14px;color:var(--cinza);line-height:1.3}
+.fones{display:flex;flex-direction:column;gap:10px}
+.fone{display:flex;align-items:center;gap:14px;min-height:70px;background:var(--branco);border:2px solid var(--borda);border-radius:16px;padding:10px 14px;text-decoration:none;color:var(--texto)}
+.fone b{font-size:30px;font-weight:800;color:var(--verde);min-width:62px}
+.fone strong{display:block;font-size:17px}
+.fone span{display:block;font-size:15px;color:var(--cinza);line-height:1.3}
+.fone .ligar{margin-left:auto;background:var(--verde);color:#fff;font-weight:700;font-size:15px;padding:8px 14px;border-radius:20px;flex-shrink:0}
+.acoes{display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--branco);border-top:1px solid var(--borda)}
+.acoes button{flex:1;min-height:56px;border-radius:16px;font-size:18px;font-weight:800;cursor:pointer}
+.fechar{background:var(--branco);border:2px solid var(--borda);color:var(--texto)}
+.proxima{background:var(--azul);border:2px solid var(--azul);color:#fff}
+.proxima[hidden]{display:none}
 
-/* números */
-.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.nums div{background:var(--branco);border-radius:12px;padding:14px 10px;text-align:center}
-.nums b{display:block;font-size:40px;font-weight:800;color:var(--verde);line-height:1.1}
-.nums span{display:block;font-size:15px;color:var(--cinza);line-height:1.3}
-
-/* telefones */
-.fones{display:flex;flex-direction:column;gap:12px;margin-top:20px}
-.fone{display:flex;align-items:center;gap:16px;min-height:76px;background:var(--branco);border:2px solid var(--borda);border-radius:16px;padding:12px 18px;text-decoration:none;color:var(--texto)}
-.fone b{font-size:34px;font-weight:800;color:var(--verde);min-width:72px}
-.fone strong{display:block;font-size:19px}
-.fone span{display:block;font-size:16px;color:var(--cinza);line-height:1.35}
-.fone .ligar{margin-left:auto;background:var(--verde);color:#fff;font-weight:700;font-size:16px;padding:8px 14px;border-radius:20px;flex-shrink:0}
-
-footer{background:var(--navy);color:#DCE6F2;text-align:center;padding:26px 18px 34px;font-size:15px;line-height:1.5}
-footer b{color:#fff;font-size:18px}
+/* telas muito baixas (celular deitado): deixa rolar para não cortar */
+@media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
 </style>
 </head>
-<body class="sem-js">
+<body>
 
+<div class="app">
 <header class="topo">
-<div class="wrap">
 <img src="weligton.webp" alt="Foto de Weligton Araujo Pires">
-<div>
-<h1>Weligton Araujo Pires</h1>
-<p class="cargo">CONSELHO DE SEGURANÇA</p>
-</div>
-</div>
+<div><h1>Weligton Araujo Pires</h1><p>CONSELHO DE SEGURANÇA</p></div>
 </header>
-<div class="data">Eleição: <b>sábado, 28/11</b> · das 9h às 12h<br>Churrasqueira nº 02</div>
+<div class="faixa">Eleição: <b>sábado, 28/11</b> · das 9h às 12h<br>Churrasqueira nº 02</div>
 
-<main class="wrap">
-
-<!-- INÍCIO -->
-<section class="tela" id="inicio">
-<p class="chamada">Segurança se faz com presença.</p>
-<p class="ajuda">Toque em um botão para ver as propostas.</p>
-
-<p class="grupo">MINHAS PROPOSTAS</p>
-<nav class="menu">
-<a class="botao" href="#acesso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Controle de acesso<span class="seta">›</span></a>
-<a class="botao" href="#transito"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>Trânsito e crianças<span class="seta">›</span></a>
-<a class="botao" href="#cuidado"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span>Idosos, crianças e bem-estar<span class="seta">›</span></a>
-<a class="botao" href="#mulheres"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span>Mulheres na segurança<span class="seta">›</span></a>
-<a class="botao" href="#patrimonio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>Patrimônio e dados<span class="seta">›</span></a>
-<a class="botao" href="#transparencia"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Transparência<span class="seta">›</span></a>
+<main class="miolo">
+<p class="rotulo">MINHAS PROPOSTAS</p>
+<nav class="grade" aria-label="Propostas">
+<a class="tile" href="#acesso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Controle de acesso</a>
+<a class="tile" href="#transito"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span>Trânsito e crianças</a>
+<a class="tile" href="#cuidado"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span>Idosos e bem-estar</a>
+<a class="tile" href="#mulheres"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span>Mulheres na segurança</a>
+<a class="tile" href="#patrimonio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>Patrimônio e dados</a>
+<a class="tile" href="#transparencia"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Transparência</a>
 </nav>
+<div class="linha">
+<a class="mini votar" href="#votar"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Como votar</a>
+<a class="mini" href="#telefones"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Emergência</a>
+<a class="mini" href="#conselho"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg>O Conselho</a>
+</div>
+<p class="dica">Toque em um botão para ver os detalhes.</p>
+</main>
+</div>
 
-<p class="grupo">INFORMAÇÕES ÚTEIS</p>
-<nav class="menu">
-<a class="botao destaque" href="#votar"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></span>Como votar<span class="seta">›</span></a>
-<a class="botao" href="#telefones"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span>Telefones de emergência<span class="seta">›</span></a>
-<a class="botao" href="#conselho"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg></span>Como o Conselho funciona<span class="seta">›</span></a>
-</nav>
-</section>
+<!-- JANELA FLUTUANTE -->
+<div class="fundo-modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-janela">
+<div class="janela">
+<div class="cab"><span class="ic" id="icone-janela"></span><h2 id="titulo-janela"></h2><button class="x" id="x" aria-label="Fechar">×</button></div>
+<div class="corpo" id="corpo">
 
-<!-- MULHERES -->
-<section class="tela" id="mulheres">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Mulheres na segurança</h2>
-<div class="caixa-verde"><p><b>Nenhuma mulher</b> está entre os candidatos ao Conselho de Segurança. As 3 vagas que ficam abertas são uma oportunidade.</p></div>
-<ul class="itens">
-<li><h3>Moradoras nas vagas abertas</h3><p>Convidar e incentivar mulheres a ocupar as vagas do Conselho.</p><span class="base">Estatuto, Art. 40</span></li>
-<li><h3>Canal reservado e sigiloso</h3><p>Para relatar assédio, importunação ou situação de risco sem se expor no grupo.</p><span class="base">Estatuto, Art. 41, II</span></li>
-<li><h3>Campanha “Não se cale”</h3><p>Cartazes nas áreas comuns com os telefones 180 e 190, e orientação para o vizinho pedir ajuda ao presenciar uma agressão.</p><span class="base">Estatuto, Art. 41, II</span></li>
-</ul>
-<p class="subtitulo">Quando uma mulher sofre agressão</p>
-<p class="intro">Proposta de passo a passo, com portaria e ronda treinadas para segui-lo. Vale para qualquer moradora.</p>
-<ol class="itens numerada">
-<li><h3>Agressão acontecendo: ligar 190 na hora</h3><p>A portaria chama a Polícia Militar e envia a ronda, sem esperar autorização.</p></li>
-<li><h3>Acolher com sigilo</h3><p>Oferecer um local seguro e nunca expor a moradora.</p></li>
-<li><h3>Guardar as imagens</h3><p>Preservar as gravações e registrar a ocorrência para as autoridades.</p></li>
-<li><h3>Orientar sobre a rede de apoio</h3><p>Ligue 180, delegacia e Patrulha Maria da Penha.</p></li>
-<li><h3>Medida protetiva respeitada</h3><p>Com autorização da moradora, a portaria não libera a entrada do agressor.</p></li>
-</ol>
-<p class="nota">Base: Estatuto, Art. 41, II e VII. Referências: Lei Maria da Penha (Lei nº 11.340/2006) e <a href="https://www.oabgo.org.br/wp-content/uploads/2025/03/PREVENCAO-E-PROTECAO-CONTRA-A-VIOLENCIA-DOMESTICA-NOS-CONDOMINIOS-2-1.pdf">cartilha da OAB-GO</a>.</p>
-<div class="rodape-tela"><a class="botao" href="#patrimonio">Próxima: Patrimônio e dados<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
-
-<!-- ACESSO -->
-<section class="tela" id="acesso">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Controle de acesso</h2>
+<div class="painel" id="p-acesso" data-titulo="Controle de acesso" data-proxima="transito">
 <p class="intro">Mais controle de quem entra e de quem sai.</p>
 <ul class="itens">
 <li><h3>Cadastro facial na prática</h3><p>Fazer o sistema que já existe funcionar para todos, com cadastro atualizado.</p><span class="base">Estatuto, Art. 41, VII</span></li>
@@ -161,13 +135,9 @@ footer b{color:#fff;font-size:18px}
 <li><h3>Registro de todos que entram</h3><p>Visitantes, prestadores e também quem tem entrada livre, com identificação na entrada.</p><span class="base">Estatuto, Art. 41, II</span></li>
 <li><h3>Saída de materiais simples</h3><p>Um jeito rápido de autorizar a saída de móveis, ferramentas e materiais.</p><span class="base">Estatuto, Art. 41, II</span></li>
 </ul>
-<div class="rodape-tela"><a class="botao" href="#transito">Próxima: Trânsito e crianças<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- TRÂNSITO -->
-<section class="tela" id="transito">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Trânsito e crianças</h2>
+<div class="painel" id="p-transito" data-titulo="Trânsito e crianças" data-proxima="cuidado">
 <p class="intro">O Estatuto dá ao Conselho a responsabilidade pelo trânsito de pessoas e veículos dentro do residencial.</p>
 <ul class="itens">
 <li><h3>Pontos de risco mapeados com os moradores</h3><p>Identificar juntos as esquinas e trechos onde o perigo é maior.</p><span class="base">Estatuto, Art. 41, III</span></li>
@@ -175,13 +145,9 @@ footer b{color:#fff;font-size:18px}
 <li><h3>Orientação a entregadores e caminhões</h3><p>Informar na portaria a velocidade, os horários e os locais de parada.</p><span class="base">Estatuto, Art. 41, II</span></li>
 <li><h3>Sinalização perto do parquinho e da quadra</h3><p>Onde as crianças mais circulam, o aviso ao motorista precisa ser mais claro.</p><span class="base">Estatuto, Art. 41, III</span></li>
 </ul>
-<div class="rodape-tela"><a class="botao" href="#cuidado">Próxima: Idosos, crianças e bem-estar<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- CUIDADO -->
-<section class="tela" id="cuidado">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Idosos, crianças e bem-estar</h2>
+<div class="painel" id="p-cuidado" data-titulo="Idosos, crianças e bem-estar" data-proxima="mulheres">
 <p class="intro">Segurança também é cuidado com quem mais precisa.</p>
 <ul class="itens">
 <li><h3>Contato de emergência dos idosos</h3><p>Cadastro voluntário de um familiar para avisar em emergências, guardado com sigilo.</p><span class="base">Estatuto, Art. 41, II</span></li>
@@ -190,25 +156,36 @@ footer b{color:#fff;font-size:18px}
 <li><h3>Rondas nas caminhadas</h3><p>Mais presença nos horários em que os moradores caminham.</p><span class="base">Estatuto, Art. 41, III</span></li>
 <li><h3>Iluminação</h3><p>Identificar e corrigir os pontos escuros do residencial.</p><span class="base">Estatuto, Art. 41, III</span></li>
 </ul>
-<div class="rodape-tela"><a class="botao" href="#mulheres">Próxima: Mulheres na segurança<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- PATRIMÔNIO -->
-<section class="tela" id="patrimonio">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Patrimônio e dados</h2>
+<div class="painel" id="p-mulheres" data-titulo="Mulheres na segurança" data-proxima="patrimonio">
+<div class="caixa-verde"><b>Nenhuma mulher</b> está entre os candidatos ao Conselho de Segurança. As 3 vagas que ficam abertas são uma oportunidade.</div>
+<ul class="itens">
+<li><h3>Moradoras nas vagas abertas</h3><p>Convidar e incentivar mulheres a ocupar as vagas do Conselho.</p><span class="base">Estatuto, Art. 40</span></li>
+<li><h3>Canal reservado e sigiloso</h3><p>Para relatar assédio, importunação ou situação de risco sem se expor no grupo.</p><span class="base">Estatuto, Art. 41, II</span></li>
+<li><h3>Campanha “Não se cale”</h3><p>Cartazes nas áreas comuns com os telefones 180 e 190, e orientação para o vizinho pedir ajuda ao presenciar uma agressão.</p><span class="base">Estatuto, Art. 41, II</span></li>
+</ul>
+<p class="subtitulo">Quando uma mulher sofre agressão</p>
+<p class="intro" style="margin-top:6px">Proposta de passo a passo, com portaria e ronda treinadas para segui-lo. Vale para qualquer moradora.</p>
+<ol class="itens numerada">
+<li><h3>Agressão acontecendo: ligar 190 na hora</h3><p>A portaria chama a Polícia Militar e envia a ronda, sem esperar autorização.</p></li>
+<li><h3>Acolher com sigilo</h3><p>Oferecer um local seguro e nunca expor a moradora.</p></li>
+<li><h3>Guardar as imagens</h3><p>Preservar as gravações e registrar a ocorrência para as autoridades.</p></li>
+<li><h3>Orientar sobre a rede de apoio</h3><p>Ligue 180, delegacia e Patrulha Maria da Penha.</p></li>
+<li><h3>Medida protetiva respeitada</h3><p>Com autorização da moradora, a portaria não libera a entrada do agressor.</p></li>
+</ol>
+<p class="nota">Base: Estatuto, Art. 41, II e VII. Referências: Lei Maria da Penha (Lei nº 11.340/2006) e <a href="https://www.oabgo.org.br/wp-content/uploads/2025/03/PREVENCAO-E-PROTECAO-CONTRA-A-VIOLENCIA-DOMESTICA-NOS-CONDOMINIOS-2-1.pdf">cartilha da OAB-GO</a>.</p>
+</div>
+
+<div class="painel" id="p-patrimonio" data-titulo="Patrimônio e dados" data-proxima="transparencia">
 <p class="intro">A área de lazer é de todos. E, com mais câmeras, vem mais responsabilidade com as imagens.</p>
 <ul class="itens">
 <li><h3>Câmeras na área de lazer</h3><p>Para prevenir danos às churrasqueiras, aos brinquedos e à academia, com registro e acompanhamento de cada caso.</p><span class="base">Estatuto, Art. 41, III e VII</span></li>
 <li><h3>Regras para as imagens</h3><p>Quem acessa, por quanto tempo ficam guardadas e como são repassadas à polícia, conforme a LGPD.</p><span class="base">Estatuto, Art. 41, II</span></li>
 </ul>
-<div class="rodape-tela"><a class="botao" href="#transparencia">Próxima: Transparência<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- TRANSPARÊNCIA -->
-<section class="tela" id="transparencia">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Transparência</h2>
+<div class="painel" id="p-transparencia" data-titulo="Transparência" data-proxima="votar">
 <p class="intro">Pelo Estatuto, as reuniões do Conselho de Segurança são públicas e qualquer associado pode participar.</p>
 <ul class="itens">
 <li><h3>Reuniões abertas</h3><p>Calendário divulgado com antecedência e convite a todos os moradores.</p><span class="base">Estatuto, Art. 18</span></li>
@@ -222,27 +199,19 @@ footer b{color:#fff;font-size:18px}
 <li><h3>Protocolo para casos de agressão contra mulheres</h3></li>
 <li><h3>Regras para o uso das imagens das câmeras</h3></li>
 </ol>
-<div class="rodape-tela"><a class="botao destaque" href="#votar">Ver como votar<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- VOTAR -->
-<section class="tela" id="votar">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Como votar</h2>
-<ul class="itens">
+<div class="painel" id="p-votar" data-titulo="Como votar">
+<ul class="itens" style="margin-top:0">
 <li><h3>Quando e onde</h3><p>Sábado, 28/11, das 9h às 12h, na Churrasqueira nº 02. A votação é presencial.</p></li>
 <li><h3>Na cédula</h3><p>Você pode escolher até 3 candidatos em cada Conselho. No Conselho de Segurança, inclua o <b>Weligton</b>.</p></li>
 <li><h3>Não pode ir? Vote por procuração</h3><p>Com firma reconhecida em cartório: não precisa enviar antes.</p><p>Com certificado digital: envie o PDF até 72 horas antes da eleição para <a href="mailto:administrativo@villasuicabrasilia.com">administrativo@villasuicabrasilia.com</a> ou pelo WhatsApp <a href="https://wa.me/5561996608012">(61) 99660-8012</a> ou <a href="https://wa.me/5561999710299">(61) 99971-0299</a>.</p></li>
 </ul>
-<div class="caixa-verde"><p><b>Conto com o seu voto!</b> Segurança se faz com presença.</p></div>
-<div class="rodape-tela"><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+<div class="caixa-verde" style="margin-top:14px"><b>Conto com o seu voto!</b> Segurança se faz com presença.</div>
+</div>
 
-<!-- TELEFONES -->
-<section class="tela" id="telefones">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Telefones de emergência</h2>
-<p class="intro">Toque para ligar.</p>
+<div class="painel" id="p-telefones" data-titulo="Telefones de emergência">
+<p class="intro" style="margin-bottom:12px">Toque para ligar.</p>
 <div class="fones">
 <a class="fone" href="tel:190"><b>190</b><div><strong>Polícia Militar</strong><span>Emergência e agressão acontecendo</span></div><span class="ligar">Ligar</span></a>
 <a class="fone" href="tel:180"><b>180</b><div><strong>Central da Mulher</strong><span>Violência contra a mulher</span></div><span class="ligar">Ligar</span></a>
@@ -250,43 +219,65 @@ footer b{color:#fff;font-size:18px}
 <a class="fone" href="tel:193"><b>193</b><div><strong>Bombeiros</strong><span>Incêndio e resgate</span></div><span class="ligar">Ligar</span></a>
 <a class="fone" href="tel:100"><b>100</b><div><strong>Direitos Humanos</strong><span>Violência contra idosos e crianças</span></div><span class="ligar">Ligar</span></a>
 </div>
-<div class="rodape-tela"><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-<!-- CONSELHO -->
-<section class="tela" id="conselho">
-<a class="voltar" href="#inicio">‹ Voltar ao início</a>
-<h2>Como o Conselho funciona</h2>
+<div class="painel" id="p-conselho" data-titulo="Como o Conselho funciona" data-proxima="acesso" data-rotulo="Ver propostas ›">
 <div class="nums">
 <div><b>7</b><span>vagas no Conselho</span></div>
 <div><b>4</b><span>candidatos nesta eleição</span></div>
 <div><b>3</b><span>vagas ficam abertas</span></div>
 </div>
-<p class="intro" style="margin-top:20px">O Conselho de Segurança estabelece as normas de segurança, define as ações e supervisiona a execução. As decisões são tomadas em grupo. Por isso, tudo aqui são <b>propostas</b> que vou levar e defender lá dentro.</p>
+<p class="intro" style="margin-top:16px">O Conselho de Segurança estabelece as normas de segurança, define as ações e supervisiona a execução. As decisões são tomadas em grupo. Por isso, tudo aqui são <b>propostas</b> que vou levar e defender lá dentro.</p>
 <p class="nota">Fonte: Estatuto da Associação, Art. 40 e Art. 41.</p>
-<div class="rodape-tela"><a class="botao" href="#acesso">Ver as propostas<span class="seta">›</span></a><a class="voltar" href="#inicio">‹ Voltar ao início</a></div>
-</section>
+</div>
 
-</main>
-
-<footer>
-<b>Weligton Araujo Pires</b><br>
-Candidato ao Conselho de Segurança · Quadra 22<br>
-Residencial Villa Suíça
-</footer>
+</div>
+<div class="acoes">
+<button class="fechar" id="fechar">Fechar</button>
+<button class="proxima" id="proxima">Próxima ›</button>
+</div>
+</div>
+</div>
 
 <script>
 (function(){
-  document.body.classList.remove('sem-js');
-  var telas = document.querySelectorAll('.tela');
+  var modal = document.getElementById('modal');
+  var corpo = document.getElementById('corpo');
+  var titulo = document.getElementById('titulo-janela');
+  var icone = document.getElementById('icone-janela');
+  var btnProx = document.getElementById('proxima');
+  var abertoPeloApp = false;
+  var icones = {};
+  document.querySelectorAll('.tile, .mini').forEach(function(a){
+    var svg = a.querySelector('svg');
+    if (svg) icones[a.getAttribute('href').slice(1)] = svg.outerHTML.replace(/stroke="#1F5FAE"/g, 'stroke="#fff"');
+    a.addEventListener('click', function(){ abertoPeloApp = true; });
+  });
+
   function mostrar(){
-    var id = (location.hash || '#inicio').slice(1);
-    var alvo = document.getElementById(id);
-    if (!alvo || !alvo.classList.contains('tela')) { alvo = document.getElementById('inicio'); }
-    for (var i = 0; i < telas.length; i++) { telas[i].classList.toggle('ativa', telas[i] === alvo); }
-    window.scrollTo(0, 0);
-    setTimeout(function(){ window.scrollTo(0, 0); }, 0);
+    var id = location.hash.slice(1);
+    var painel = id && document.getElementById('p-' + id);
+    if (!painel) { modal.classList.remove('aberto'); document.body.style.overflow=''; return; }
+    document.querySelectorAll('.painel').forEach(function(p){ p.classList.toggle('ativo', p === painel); });
+    titulo.textContent = painel.getAttribute('data-titulo');
+    icone.innerHTML = icones[id] || '';
+    var prox = painel.getAttribute('data-proxima');
+    if (prox) {
+      btnProx.hidden = false;
+      btnProx.textContent = painel.getAttribute('data-rotulo') || (prox === 'votar' ? 'Como votar ›' : 'Próxima ›');
+      btnProx.onclick = function(){ location.replace('#' + prox); };
+    } else { btnProx.hidden = true; }
+    modal.classList.add('aberto');
+    corpo.scrollTop = 0;
   }
+  function fechar(){
+    if (abertoPeloApp && history.length > 1) { abertoPeloApp = false; history.back(); }
+    else { history.replaceState(null, '', location.pathname + location.search); mostrar(); }
+  }
+  document.getElementById('fechar').addEventListener('click', fechar);
+  document.getElementById('x').addEventListener('click', fechar);
+  modal.addEventListener('click', function(e){ if (e.target === modal) fechar(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.classList.contains('aberto')) fechar(); });
   window.addEventListener('hashchange', mostrar);
   mostrar();
 })();

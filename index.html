@@ -13,6 +13,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://weligtonpiresaraujo.github.io/propostas/">
 <meta name="theme-color" content="#1F5FAE">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -106,15 +108,24 @@ button{font-family:inherit}
 .proxima[hidden]{display:none}
 
 @media (max-height:600px){.dica{display:none}}
+.foto-link{position:relative;display:block;flex-shrink:0;border-radius:50%}
+.lupa{position:absolute;right:-2px;bottom:-2px;width:26px;height:26px;border-radius:50%;background:#7FE0A8;border:2px solid var(--azul);display:flex;align-items:center;justify-content:center}
+.lupa svg{width:15px;height:15px}
+.santinho{display:block;width:100%;height:auto;border-radius:14px;background:var(--navy)}
+.fundo-modal.foto .corpo{padding:10px;display:flex;align-items:center;justify-content:center}
+.fundo-modal.foto .santinho{width:auto;max-width:100%;max-height:calc(92dvh - 170px);margin:0 auto}
+@supports not (height:1dvh){.fundo-modal.foto .santinho{max-height:calc(92vh - 170px)}}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #F2B705;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.janela{animation:none}}
 /* telas muito baixas (celular deitado): deixa rolar para não cortar */
 @media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
 </style>
 </head>
 <body>
 
-<div class="app">
+<div class="app" id="app">
 <header class="topo">
-<img src="weligton.webp" alt="Foto de Weligton Araujo Pires">
+<a class="foto-link" href="#santinho" data-abre="santinho" aria-label="Ver o santinho de Weligton"><img src="weligton.webp" alt="Foto de Weligton Araujo Pires"><span class="lupa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0E2238" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span></a>
 <div><h1>Weligton Araujo Pires</h1><p>CONSELHO DE SEGURANÇA</p></div>
 </header>
 <div class="faixa">Eleição: <b>sábado, 28/11</b> · das 9h às 12h<br>Churrasqueira nº 02</div>
@@ -122,19 +133,19 @@ button{font-family:inherit}
 <main class="miolo">
 <p class="rotulo">MINHAS PROPOSTAS</p>
 <nav class="grade" aria-label="Propostas">
-<a class="tile" href="#acesso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="lbl">Controle de acesso</span></a>
-<a class="tile" href="#transito"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span><span class="lbl">Trânsito e crianças</span></a>
-<a class="tile" href="#cuidado"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span><span class="lbl">Idosos e bem‑estar</span></a>
-<a class="tile" href="#mulheres"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span><span class="lbl">Mulheres na segurança</span></a>
-<a class="tile" href="#patrimonio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span class="lbl">Patrimônio e dados</span></a>
-<a class="tile" href="#transparencia"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="lbl">Transparência</span></a>
+<a class="tile" href="#acesso" data-abre="acesso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="lbl">Controle de acesso</span></a>
+<a class="tile" href="#transito" data-abre="transito"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg></span><span class="lbl">Trânsito e crianças</span></a>
+<a class="tile" href="#cuidado" data-abre="cuidado"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg></span><span class="lbl">Idosos e bem‑estar</span></a>
+<a class="tile" href="#mulheres" data-abre="mulheres"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span><span class="lbl">Mulheres na segurança</span></a>
+<a class="tile" href="#patrimonio" data-abre="patrimonio"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span class="lbl">Patrimônio e dados</span></a>
+<a class="tile" href="#transparencia" data-abre="transparencia"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="lbl">Transparência</span></a>
 </nav>
 <div class="linha">
-<a class="mini votar" href="#votar"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Como votar</a>
-<a class="mini" href="#telefones"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Emergência</a>
-<a class="mini" href="#conselho"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg>O Conselho</a>
+<a class="mini votar" href="#votar" data-abre="votar"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Como votar</a>
+<a class="mini" href="#telefones" data-abre="telefones"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Emergência</a>
+<a class="mini" href="#conselho" data-abre="conselho"><svg viewBox="0 0 24 24" fill="none" stroke="#1F5FAE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.5c3 0 6 2 6 5.5"/></svg>O Conselho</a>
 </div>
-<a class="sugestao" href="#sugestao"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>Mande sua sugestão</a>
+<a class="sugestao" href="#sugestao" data-abre="sugestao"><svg viewBox="0 0 24 24" fill="none" stroke="#1E7A52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>Mande sua sugestão</a>
 </main>
 </div>
 
@@ -238,15 +249,19 @@ button{font-family:inherit}
 </div>
 </div>
 
+<div class="painel" id="p-santinho" data-titulo="Meu santinho" data-acao="baixar">
+<img class="santinho" src="santinho-weligton.jpg" width="1080" height="1350" alt="Santinho: Segurança se faz com presença. Weligton Araujo Pires, Conselho de Segurança, morador da Quadra 22. Sábado, 28/11, das 9h às 12h, Churrasqueira nº 02." loading="lazy">
+</div>
+
 <div class="painel" id="p-sugestao" data-titulo="Mande sua sugestão" data-acao="whats">
 <p class="intro">Ninguém conhece melhor o residencial do que quem mora nele. Sua sugestão chega direto no meu WhatsApp.</p>
 <form class="form" id="form-sugestao" novalidate>
-<label>Nome<input type="text" id="f-nome" autocomplete="name" placeholder="Seu nome"></label>
+<label>Nome<input type="text" id="f-nome" maxlength="80" autocomplete="name" placeholder="Seu nome"></label>
 <div class="duas">
-<label>Quadra<input type="text" id="f-quadra" inputmode="numeric" placeholder="Ex.: 10"></label>
-<label>Lote<input type="text" id="f-lote" inputmode="numeric" placeholder="Ex.: 05"></label>
+<label>Quadra<input type="text" id="f-quadra" maxlength="10" inputmode="numeric" placeholder="Ex.: 10"></label>
+<label>Lote<input type="text" id="f-lote" maxlength="10" inputmode="numeric" placeholder="Ex.: 05"></label>
 </div>
-<label>Sugestão<textarea id="f-texto" placeholder="Escreva aqui a sua sugestão para a segurança do Villa Suíça"></textarea></label>
+<label>Sugestão<textarea id="f-texto" maxlength="1000" placeholder="Escreva aqui a sua sugestão para a segurança do Villa Suíça"></textarea></label>
 <p class="aviso-erro" id="f-erro">Preencha todos os campos, por favor.</p>
 <p class="privado">Seus dados servem só para identificar a sugestão e não serão divulgados.</p>
 </form>
@@ -270,65 +285,6 @@ button{font-family:inherit}
 </div>
 </div>
 
-<script>
-(function(){
-  var modal = document.getElementById('modal');
-  var corpo = document.getElementById('corpo');
-  var titulo = document.getElementById('titulo-janela');
-  var icone = document.getElementById('icone-janela');
-  var btnProx = document.getElementById('proxima');
-  var abertoPeloApp = false;
-  var icones = {};
-  document.querySelectorAll('.tile, .mini, .sugestao').forEach(function(a){
-    var svg = a.querySelector('svg');
-    if (svg) icones[a.getAttribute('href').slice(1)] = svg.outerHTML.replace(/stroke="#1F5FAE"/g, 'stroke="#fff"').replace(/stroke="#1E7A52"/g, 'stroke="#fff"');
-    a.addEventListener('click', function(){ abertoPeloApp = true; });
-  });
-
-  function mostrar(){
-    var id = location.hash.slice(1);
-    var painel = id && document.getElementById('p-' + id);
-    if (!painel) { modal.classList.remove('aberto'); document.body.style.overflow=''; return; }
-    document.querySelectorAll('.painel').forEach(function(p){ p.classList.toggle('ativo', p === painel); });
-    titulo.textContent = painel.getAttribute('data-titulo');
-    icone.innerHTML = icones[id] || '';
-    var prox = painel.getAttribute('data-proxima');
-    btnProx.classList.remove('whats');
-    if (painel.getAttribute('data-acao') === 'whats') {
-      btnProx.hidden = false;
-      btnProx.textContent = 'Enviar pelo WhatsApp';
-      btnProx.classList.add('whats');
-      btnProx.onclick = enviarWhats;
-    } else if (prox) {
-      btnProx.hidden = false;
-      btnProx.textContent = painel.getAttribute('data-rotulo') || (prox === 'votar' ? 'Como votar ›' : 'Próxima ›');
-      btnProx.onclick = function(){ location.replace('#' + prox); };
-    } else { btnProx.hidden = true; }
-    modal.classList.add('aberto');
-    corpo.scrollTop = 0;
-  }
-  document.getElementById('form-sugestao').addEventListener('input', function(){ document.getElementById('f-erro').classList.remove('mostrar'); });
-  function enviarWhats(){
-    var v = function(id){ return document.getElementById(id).value.trim(); };
-    var nome = v('f-nome'), quadra = v('f-quadra'), lote = v('f-lote'), texto = v('f-texto');
-    var erro = document.getElementById('f-erro');
-    if (!nome || !quadra || !lote || !texto) { erro.classList.add('mostrar'); corpo.scrollTop = corpo.scrollHeight; return; }
-    erro.classList.remove('mostrar');
-    var msg = 'Olá, Weligton! Tenho uma sugestão para a segurança do Villa Suíça.\n' +
-      'Nome: ' + nome + '\n' + 'Quadra: ' + quadra + ' · Lote: ' + lote + '\n' + 'Sugestão: ' + texto;
-    window.location.href = 'https://wa.me/5561992551099?text=' + encodeURIComponent(msg);
-  }
-  function fechar(){
-    if (abertoPeloApp && history.length > 1) { abertoPeloApp = false; history.back(); }
-    else { history.replaceState(null, '', location.pathname + location.search); mostrar(); }
-  }
-  document.getElementById('fechar').addEventListener('click', fechar);
-  document.getElementById('x').addEventListener('click', fechar);
-  modal.addEventListener('click', function(e){ if (e.target === modal) fechar(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.classList.contains('aberto')) fechar(); });
-  window.addEventListener('hashchange', mostrar);
-  mostrar();
-})();
-</script>
+<script src="app.js" defer></script>
 </body>
 </html>

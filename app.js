@@ -69,6 +69,12 @@
       app.setAttribute('aria-hidden', 'true');
     }
     corpo.scrollTop = 0;
+    // Contagem anônima de qual janela foi aberta (GoatCounter, sem cookies)
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'janela-' + id, title: painel.getAttribute('data-titulo'), event: true });
+      }
+    } catch (e) {}
     if (teclado) btnX.focus({ preventScroll: true });
     else if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   }

@@ -150,6 +150,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .passos-curtos span{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
 
 .fonte{font-size:13px;color:var(--cinza);text-align:center;margin-top:16px;font-style:italic}
+/* proteção contra cópia (barreira simples) */
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
+input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 /* telas muito baixas (celular deitado): deixa rolar para não cortar */
 @media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
 </style>
@@ -158,7 +162,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <div class="app" id="app">
 <header class="topo">
-<a class="foto-link" href="#santinho" data-abre="santinho" aria-label="Ver o santinho de Weligton"><img src="weligton.webp" alt="Foto de Weligton Araujo Pires"><span class="lupa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0E2238" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span></a>
+<a class="foto-link" href="#santinho" data-abre="santinho" aria-label="Ver o santinho de Weligton"><img draggable="false" src="weligton.webp" alt="Foto de Weligton Araujo Pires"><span class="lupa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#0E2238" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8.5v5M8.5 11h5"/></svg></span></a>
 <div><h1>Weligton Araujo Pires</h1><p>CONSELHO DE SEGURANÇA</p></div>
 </header>
 <div class="faixa">Eleição: <b>sábado, 28/11</b> · das 9h às 12h<br>Churrasqueira nº 02</div>
@@ -189,7 +193,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="corpo" id="corpo">
 
 <div class="painel" id="p-acesso" data-titulo="Controle de acesso" data-proxima="transito">
-<div class="banner"><img src="portaria.webp" alt="Portaria do Residencial Villa Suíça" loading="lazy"></div>
+<div class="banner"><img draggable="false" src="portaria.webp" alt="Portaria do Residencial Villa Suíça" loading="lazy"></div>
 <div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">🙂</span><span class="txt"><b>Cadastro facial na prática</b><small>O sistema que já existe, funcionando para todos.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>O reconhecimento facial só protege de verdade se todos estiverem cadastrados e com os dados em dia. Quando o cadastro está incompleto, a portaria acaba liberando a entrada na confiança.</p><p class="como"><b>Como:</b> mutirão de cadastro e atualização com apoio da administração, e revisão periódica de quem se mudou ou deixou de ter acesso.</p><span class="base">Estatuto, Art. 41, VII</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">🔔</span><span class="txt"><b>Aviso de prestador que não saiu</b><small>Às 17h, a ronda sabe quem ainda está dentro.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Sem esse aviso, um trabalhador que entrou de manhã pode continuar dentro do residencial à noite sem que ninguém perceba.</p><p class="como"><b>Como:</b> às 17h, horário definido para a saída dos prestadores de serviço, a guarita da ronda recebe a lista de quem entrou e ainda não saiu, e confere cada caso: se o serviço continua com autorização do morador ou se a pessoa precisa ser localizada.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
@@ -200,7 +204,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-transito" data-titulo="Trânsito e crianças" data-proxima="cuidado">
-<div class="banner"><img src="transito.webp" alt="Ilustração: pai e filha atravessando a faixa de pedestres de mãos dadas" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="banner"><img draggable="false" src="transito.webp" alt="Ilustração: pai e filha atravessando a faixa de pedestres de mãos dadas" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
 <div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">📍</span><span class="txt"><b>Pontos de risco mapeados</b><small>Ouvindo quem mora em cada quadra.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Quem mora em cada quadra sabe onde os carros correm, onde a visão é ruim e onde as crianças atravessam. Esse conhecimento precisa chegar ao Conselho.</p><p class="como"><b>Como:</b> levantamento aberto a todos, por formulário ou nas reuniões, e uma lista dos pontos que precisam de atenção primeiro.</p><span class="base">Estatuto, Art. 41, III</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">🚗</span><span class="txt"><b>Campanha sobre velocidade</b><small>A regra já existe: vamos lembrar todo mundo.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>O Estatuto já proíbe trafegar acima da velocidade indicada nas placas. A regra existe; falta lembrar todo mundo dela.</p><p class="como"><b>Como:</b> avisos nos grupos, cartazes na portaria e conversa com os moradores, sempre em tom de conscientização e boa convivência.</p><span class="base">Estatuto, Art. 12 e Art. 41, III</span></div></details>
@@ -211,7 +215,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-cuidado" data-titulo="Idosos, crianças e bem‑estar" data-proxima="mulheres">
-<div class="banner"><img src="cuidado.webp" alt="Ilustração: moradora caminhando de braço dado com um idoso de bengala ao entardecer" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="banner"><img draggable="false" src="cuidado.webp" alt="Ilustração: moradora caminhando de braço dado com um idoso de bengala ao entardecer" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
 <div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">📞</span><span class="txt"><b>Contato de emergência dos idosos</b><small>Um familiar para avisar, com sigilo.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Quando um idoso passa mal ou sofre uma queda, cada minuto conta, e nem sempre a portaria sabe a quem avisar.</p><p class="como"><b>Como:</b> cadastro voluntário, só para quem quiser, com o telefone de um familiar ou pessoa de confiança, guardado com sigilo e usado apenas em emergências.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">🚑</span><span class="txt"><b>Emergência médica</b><small>Socorro liberado sem demora.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Numa emergência, a demora para liberar a ambulância ou para saber quem chamar pode fazer toda a diferença.</p><p class="como"><b>Como:</b> um procedimento simples para a portaria: chamar o SAMU (192) ou os Bombeiros (193), avisar a família, liberar logo a entrada do socorro e guiar a equipe até a casa.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
@@ -222,7 +226,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-mulheres" data-titulo="Mulheres na segurança" data-proxima="patrimonio">
-<div class="banner"><img src="mulheres.webp" alt="Ilustração: moradora caminhando à noite com o celular enquanto o porteiro acena da guarita" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="banner"><img draggable="false" src="mulheres.webp" alt="Ilustração: moradora caminhando à noite com o celular enquanto o porteiro acena da guarita" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
 <div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">🙋‍♀️</span><span class="txt"><b>Moradoras nas vagas abertas</b><small>Convite para ocupar as 3 vagas do Conselho.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Hoje nenhuma mulher está entre os candidatos ao Conselho de Segurança. Segurança não é igual para todos: uma mulher que chega tarde sozinha, ou que precisa de proteção, tem preocupações que muitas vezes passam despercebidas.</p><p class="como"><b>Como:</b> convidar e incentivar moradoras a ocupar as vagas abertas no Conselho. Não é reserva de vaga: é abrir a porta.</p><span class="base">Estatuto, Art. 40</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">🤫</span><span class="txt"><b>Canal reservado e sigiloso</b><small>Para relatar assédio sem se expor.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Muitas mulheres deixam de relatar assédio ou importunação por medo de se expor diante dos vizinhos.</p><p class="como"><b>Como:</b> um canal direto e sigiloso com o Conselho, em que o relato é tratado com discrição e encaminhado da forma certa.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
@@ -241,7 +245,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-patrimonio" data-titulo="Patrimônio e dados" data-proxima="transparencia">
-<div class="banner"><img src="lazer.webp" alt="Área de lazer do Residencial Villa Suíça" loading="lazy"></div>
+<div class="banner"><img draggable="false" src="lazer.webp" alt="Área de lazer do Residencial Villa Suíça" loading="lazy"></div>
 <div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">📹</span><span class="txt"><b>Câmeras na área de lazer</b><small>Cuidar do que é de todos.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Churrasqueiras, brinquedos e academia são de todos, e o conserto de cada dano sai do bolso de todos os associados.</p><p class="como"><b>Como:</b> estender a cobertura das câmeras para a área de lazer, registrar cada dano e acompanhar até a solução, para que não se repita.</p><span class="base">Estatuto, Art. 41, III e VII</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">🔒</span><span class="txt"><b>Regras para as imagens</b><small>Privacidade das famílias, conforme a LGPD.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>As câmeras protegem, mas as imagens mostram a rotina das famílias. Elas precisam ser tratadas com responsabilidade.</p><p class="como"><b>Como:</b> regras por escrito sobre quem pode acessar, por quanto tempo as imagens ficam guardadas e como são repassadas à polícia, seguindo a LGPD.</p><span class="base">Estatuto, Art. 41, II</span></div></details>
@@ -250,7 +254,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-transparencia" data-titulo="Transparência" data-proxima="votar">
-<div class="banner"><img src="transparencia.webp" alt="Ilustração: moradores reunidos na churrasqueira conversando sobre um gráfico" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
+<div class="banner"><img draggable="false" src="transparencia.webp" alt="Ilustração: moradores reunidos na churrasqueira conversando sobre um gráfico" loading="lazy"><span class="selo-ilu">Imagem ilustrativa</span></div>
 <p class="frase">O associado é <b>muito bem-vindo</b> em todas as decisões.</p><div class="lista">
 <details class="item"><summary><span class="emo" aria-hidden="true">🗓️</span><span class="txt"><b>Reuniões abertas</b><small>Todos podem acompanhar e opinar.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Decisão de segurança mexe com a rotina de todos. Por isso, todos devem poder acompanhar e dar a sua opinião. Pelo Estatuto, as reuniões do Conselho de Segurança são públicas.</p><p class="como"><b>Como:</b> calendário divulgado com antecedência, convite a todos os moradores e espaço para quem quiser falar.</p><span class="base">Estatuto, Art. 18</span></div></details>
 <details class="item"><summary><span class="emo" aria-hidden="true">👂</span><span class="txt"><b>Ouvir antes de decidir</b><small>Enquete ou reunião antes de mudanças importantes.</small></span><span class="mais">Ver detalhes</span></summary><div class="det"><p>Ninguém conhece melhor os problemas do residencial do que quem mora nele.</p><p class="como"><b>Como:</b> antes de mudanças importantes, consultar os moradores por enquete ou em reunião, e levar essas opiniões para a decisão do Conselho.</p><span class="base">Estatuto, Art. 18 e Art. 41, II</span></div></details>
@@ -288,7 +292,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 
 <div class="painel" id="p-santinho" data-titulo="Meu santinho" data-acao="baixar">
-<img class="santinho" src="santinho-weligton.jpg" width="1080" height="1350" alt="Santinho: Segurança se faz com presença. Weligton Araujo Pires, Conselho de Segurança, morador da Quadra 22. Sábado, 28/11, das 9h às 12h, Churrasqueira nº 02." loading="lazy">
+<img draggable="false" class="santinho" src="santinho-weligton.jpg" width="1080" height="1350" alt="Santinho: Segurança se faz com presença. Weligton Araujo Pires, Conselho de Segurança, morador da Quadra 22. Sábado, 28/11, das 9h às 12h, Churrasqueira nº 02." loading="lazy">
 </div>
 
 <div class="painel" id="p-sugestao" data-titulo="Mande sua sugestão" data-acao="whats">

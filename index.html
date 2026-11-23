@@ -13,7 +13,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://weligtonpiresaraujo.github.io/propostas/">
 <meta name="theme-color" content="#1F5FAE">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://weligton.goatcounter.com; connect-src https://weligton.goatcounter.com; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://weligton.goatcounter.com; connect-src https://weligton.goatcounter.com; form-action 'none'; base-uri 'none'; object-src 'none'; media-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,6 +156,12 @@ img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
 input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
 /* telas muito baixas (celular deitado): deixa rolar para não cortar */
 @media (max-height:520px){body{overflow:auto}.app{height:auto;min-height:100vh}.grade{grid-template-rows:repeat(3,96px)}}
+.video-btn{display:flex;align-items:center;justify-content:center;gap:12px;background:var(--navy);color:#fff;text-decoration:none;font-weight:800;font-size:clamp(15px,2.2vh,18px);border-radius:16px;padding:clamp(9px,1.5vh,13px) 14px;box-shadow:0 3px 10px rgba(14,34,56,.18)}
+.video-btn .play{width:clamp(30px,4.4vh,38px);height:clamp(30px,4.4vh,38px);border-radius:50%;background:#FFB627;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.video-btn .play svg{width:46%;height:46%;margin-left:8%}
+.video-btn small{font-weight:700;font-size:.8em;white-space:nowrap;background:rgba(255,255,255,.14);border-radius:999px;padding:3px 9px}
+.video-btn{text-align:left;line-height:1.2}
+.video-propostas{display:block;width:100%;max-width:400px;max-height:66vh;max-height:66dvh;aspect-ratio:9/16;margin:0 auto;border-radius:16px;background:#0E2238}
 </style>
 </head>
 <body>
@@ -168,6 +174,7 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 <div class="faixa">Eleição: <b>sábado, 28/11</b> · das 9h às 12h<br>Churrasqueira nº 02</div>
 
 <main class="miolo">
+<a class="video-btn" href="#video" data-abre="video"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z" fill="#0E2238" stroke="#0E2238" stroke-width="1.5" stroke-linejoin="round"/></svg></span>Assista ao vídeo das propostas <small>2 min</small></a>
 <p class="rotulo">MINHAS PROPOSTAS</p>
 <nav class="grade" aria-label="Propostas">
 <a class="tile" href="#acesso" data-abre="acesso"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><span class="lbl">Controle de acesso</span></a>
@@ -192,6 +199,9 @@ input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:d
 <div class="cab"><span class="ic" id="icone-janela"></span><h2 id="titulo-janela"></h2><button class="x" id="x" aria-label="Fechar">×</button></div>
 <div class="corpo" id="corpo">
 
+<div class="painel" id="p-video" data-titulo="Vídeo das propostas" data-proxima="acesso" data-rotulo="Ver as propostas ›">
+<video class="video-propostas" src="video-propostas.mp4" poster="video-capa.jpg" controls playsinline preload="none" aria-label="Vídeo com as propostas de Weligton para o Conselho de Segurança"></video>
+</div>
 <div class="painel" id="p-acesso" data-titulo="Controle de acesso" data-proxima="transito">
 <div class="banner"><img draggable="false" src="portaria.webp" alt="Portaria do Residencial Villa Suíça" loading="lazy"></div>
 <div class="lista">

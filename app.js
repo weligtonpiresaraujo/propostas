@@ -31,6 +31,7 @@
   function mostrar() {
     var id = location.hash.slice(1);
     var painel = /^[a-z]+$/.test(id) ? document.getElementById('p-' + id) : null;
+    document.querySelectorAll('video').forEach(function (v) { if (!painel || !painel.contains(v)) v.pause(); });
     if (!painel) {
       if (modal.classList.contains('aberto')) {
         modal.classList.remove('aberto');
